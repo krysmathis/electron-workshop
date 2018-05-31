@@ -5,6 +5,7 @@ const { app, BrowserWindow, ipcMain, dialog } = electron;
 const path = require("path");
 const reload = require("electron-reload");
 const isDev = require("electron-is-dev");
+const menus = require("./menus");
 
 let mainWindow = null;
 
@@ -31,6 +32,7 @@ app.on( "ready", () => {
     mainWindow.on( "closed", () => {
         mainWindow = null;
     });
+    menus.buildMenu();
 });
 
 ipcMain.on( "show-dialog", (e, arg) => {
@@ -45,10 +47,10 @@ ipcMain.on( "show-dialog", (e, arg) => {
 
 ipcMain.on("sync-response-to-dialog", (e, arg) => {
     console.log("copy that.");
-    const msgInfo = {
-        title: "My App Alert", 
-        message: "copy that",
-        buttons: ["OK"]
-    };
-    dialog.showMessageBox( msgInfo );
+    // const msgInfo = {
+    //     title: "My App Alert", 
+    //     message: "copy that",
+    //     buttons: ["OK"]
+    // };
+    // dialog.showMessageBox( msgInfo );
 });

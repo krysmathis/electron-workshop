@@ -17,5 +17,5 @@ ipcRenderer.on("response-dialog", (e, arg) => {
     if (arg === "ping") {
         console.log("pong");
     }
-    //ipcRenderer.sendSync("sync-response-to-dialog","score!");
+    ipcRenderer.sendSync("sync-response-to-dialog","score!");
 });

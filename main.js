@@ -47,10 +47,11 @@ ipcMain.on( "show-dialog", (e, arg) => {
 
 ipcMain.on("sync-response-to-dialog", (e, arg) => {
     console.log("copy that.");
-    // const msgInfo = {
-    //     title: "My App Alert", 
-    //     message: "copy that",
-    //     buttons: ["OK"]
-    // };
-    // dialog.showMessageBox( msgInfo );
+    const msgInfo = {
+        title: "My App Alert", 
+        message: arg,
+        buttons: ["OK"]
+    };
+    dialog.showMessageBox( msgInfo );
+    e.returnValue = "copy copy";
 });
